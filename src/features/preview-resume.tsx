@@ -50,26 +50,26 @@ export const PreviewResume = () => {
           <div className="col-span-2">
             <h2 className="text-xl font-semibold tracking-widest uppercase" onClick={OnClick}>CONTACT</h2>
             <ul className="pl-5 pt-3 list-disc space-y-2">
-              <li onClick={OnClick}>{values.number}</li>
-              <li onClick={OnClick}>{values.email}</li>
-              <li onClick={OnClick}>{values.address}</li>
+              <li className="break-words whitespace-normal overflow-wrap-break-word" onClick={OnClick}>{values.number}</li>
+              <li className="break-words whitespace-normal overflow-wrap-break-word" onClick={OnClick}>{values.email}</li>
+              <li className="break-words whitespace-normal overflow-wrap-break-word" onClick={OnClick}>{values.address}</li>
             </ul>
             <h2 className="text-xl font-semibold tracking-widest uppercase pt-5" onClick={OnClick}>TECHNICAL SKILLS</h2>
             <ul className="pl-5 pt-3  space-y-2">
-              <li onClick={OnClick}>{values.technicalSkillOne}</li>
-              <li onClick={OnClick}>{values.technicalSkillTwo}</li>
-              <li onClick={OnClick}>{values.technicalSkillThree}</li>
+              <li className="break-words whitespace-normal overflow-wrap-break-word" onClick={OnClick}>{values.technicalSkillOne}</li>
+              <li className="break-words whitespace-normal overflow-wrap-break-word" onClick={OnClick}>{values.technicalSkillTwo}</li>
+              <li className="break-words whitespace-normal overflow-wrap-break-word" onClick={OnClick}>{values.technicalSkillThree}</li>
             </ul>
             <h2 className="text-xl font-semibold tracking-widest uppercase pt-5" onClick={OnClick}>SOFT SKILLS</h2>
             <ul className="pl-5 pt-3 list-disc space-y-2">
-              <li onClick={OnClick}>{values.softSkillOne}</li>
-              <li onClick={OnClick}>{values.softSkillTwo}</li>
-              <li onClick={OnClick}>{values.softSkillThree}</li>
+              <li className="break-words whitespace-normal overflow-wrap-break-word" onClick={OnClick}>{values.softSkillOne}</li>
+              <li className="break-words whitespace-normal overflow-wrap-break-word" onClick={OnClick}>{values.softSkillTwo}</li>
+              <li className="break-words whitespace-normal overflow-wrap-break-word" onClick={OnClick}>{values.softSkillThree}</li>
             </ul>
           </div>
           <div className="col-span-4">
             <h2 className="text-xl font-semibold tracking-widest uppercase" onClick={OnClick}>PROFILE</h2>
-            <p className="pt-3" onClick={OnClick}>{values.profile}</p>
+            <p className="pt-3 break-words whitespace-normal overflow-wrap-break-word" onClick={OnClick}>{values.profile}</p>
             <h2 className="text-xl font-semibold tracking-widest uppercase pt-5" onClick={OnClick}>WORK EXPERIENCE</h2>
 
             <div className="pt-3">
@@ -78,7 +78,7 @@ export const PreviewResume = () => {
                 <p>{values.workExperienceStartPeriodOne} - {values.workExperienceEndPeriodOne}</p>
               </div>
               <p className="pt-3 pb-3">{values.workExperienceCompanyOne}</p>
-              <p onClick={OnClick}>{values.workExperienceDetailsOne}</p>
+              <p className="break-words whitespace-normal overflow-wrap-break-word" onClick={OnClick}>{values.workExperienceDetailsOne}</p>
             </div>
 
             <div className="pt-5">
@@ -87,7 +87,7 @@ export const PreviewResume = () => {
                 <p>{values.workExperienceStartPeriodTwo} - {values.workExperienceEndPeriodTwo}</p>
               </div>
               <p className="pt-3 pb-3">{values.workExperienceCompanyTwo}</p>
-              <p onClick={OnClick}>{values.workExperienceDetailsTwo}</p>
+              <p className="break-words whitespace-normal overflow-wrap-break-word" onClick={OnClick}>{values.workExperienceDetailsTwo}</p>
             </div>
           </div>
         </div>

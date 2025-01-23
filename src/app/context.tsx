@@ -21,7 +21,7 @@ const DefaultContext: Record<string, string> = {
     "technicalSkillThree": "Implemented VueJS to enhance user interactions and deliver seamless, intuitive interfaces",
     "softSkillOne": "Experience in creating visually appealing and cohesive design concepts.",
     "softSkillTwo": "Excellent communication skills inspoken and written English.",
-    "softSkillThree": "Ability to work independently,managing time and tasks efficiently.",
+    "softSkillThree": "Excellent communication skills inspoken and written English.",
     "profile": "Highly motivated and results-driven professional with a proven ability to excel in fast-paced environments. A passionate lifelong learner, I thrive on continuous growth and eagerly embrace the challenge of pioneering new concepts. Possessing strong analytical and problem-solving skills, I approach challenges with a strategic mindset, identifying innovative solutions to drive successful outcomes. A selfstarter with a demonstrated ability to take initiative and lead projects to completion, I am committed to contributing dynamic energy and expertise to a team-focused organization",
     "workExperienceTitleOne": "F & B Server",
     "workExperienceCompanyOne": "ONE15 Marina Hotel",
