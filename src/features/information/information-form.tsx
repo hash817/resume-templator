@@ -10,29 +10,27 @@ import { CustomInput, CustomTextarea } from "@/features/information/components/c
 import { ModuleSetting } from "@/features/information/components/module-setting";
 
 const formSchema = z.object({
-  name: z.string().min(1, {
-    message: "Please fill in name"
-  }),
+  name: z.string().min(1, {message: "Please fill in name"}),
   number: z.string().min(1, { message: "Please fill in number" }),
   email: z.string().min(1, { message: "Please fill in email" }).email({ message: "Please enter a valid email address" }),
   address: z.string().min(1, { message: "Please fill in address" }),
   technicalSkills: z.string().min(1, { message: "Please fill in technical skills" }),
   softSkills: z.string().min(1, { message: "Please fill in soft skills" }),
   profile: z.string().min(1, { message: "Please fill in profile" }),
-  workExperienceTitleOne: z.string().min(1, { message: "Please fill in work experience title (1)" }),
-  workExperienceCompanyOne: z.string().min(1, { message: "Please fill in work experience company (1)" }),
-  workExperienceDetailsOne: z.string().min(1, { message: "Please fill in work experience details (1)" }),
-  workExperiencePeriodOne: z.string().min(1, { message: "Please fill in work experience period (1)" }),
-  workExperienceTitleTwo: z.string().min(1, { message: "Please fill in work experience title (2)" }),
-  workExperienceCompanyTwo: z.string().min(1, { message: "Please fill in work experience company (2)" }),
-  workExperienceDetailsTwo: z.string().min(1, { message: "Please fill in work experience details (2)" }),
-  workExperiencePeriodTwo: z.string().min(1, { message: "Please fill in work experience period (2)" }),
+  workExperienceTitleOne: z.string().optional(),
+  workExperienceCompanyOne: z.string().optional(),
+  workExperienceDetailsOne: z.string().optional(),
+  workExperiencePeriodOne: z.string().optional(),
+  workExperienceTitleTwo: z.string().optional(),
+  workExperienceCompanyTwo: z.string().optional(),
+  workExperienceDetailsTwo: z.string().optional(),
+  workExperiencePeriodTwo: z.string().optional(),
   moduleTitleOne: z.string().min(1, { message: "Please fill in module title (1)" }),
   moduleDetailsOne: z.string().min(1, { message: "Please fill in module details (1)" }),
-  moduleTitleTwo: z.string().min(1, { message: "Please fill in module title (2)" }),
-  moduleDetailsTwo: z.string().min(1, { message: "Please fill in module details (2)" }),
-  moduleTitleThree: z.string().min(1, { message: "Please fill in module title (3)" }),
-  moduleDetailsThree: z.string().min(1, { message: "Please fill in module details (3)" }),
+  moduleTitleTwo: z.string().optional(),
+  moduleDetailsTwo: z.string().optional(),
+  moduleTitleThree: z.string().optional(),
+  moduleDetailsThree: z.string().optional(),
   ccaTitleOne: z.string().min(1, { message: "Please fill in CCA title" }),
   ccaSchoolOne: z.string().min(1, { message: "Please fill in CCA school" }),
   ccaPeriodOne: z.string().min(1, { message: "Please fill in CCA period" }),
@@ -47,8 +45,6 @@ const formSchema = z.object({
 });
 
 export type FormSchemaType = z.infer<typeof formSchema>;
-
-
 
 export function Information() {
   const settingContext = useContext(SettingContext);
@@ -106,6 +102,7 @@ export function Information() {
   }
 
   useEffect(() => {
+    console.log(form.formState.errors); 
     const subscription = form.watch((values) => {
       localStorage.setItem("formData", JSON.stringify(values)); // Auto-save on change
     });
@@ -164,10 +161,15 @@ export function Information() {
               <CustomTextarea form={form} name="moduleDetailsThree" label="Module Details 3" placeholder={"Module detail one\nModule detail two"} />
             </>
           )}
-          <CustomInput form={form} name="ccaTitleOne" label="First CCA title" placeholder="CCA title" />
-          <CustomInput form={form} name="ccaSchoolOne" label="First CCA school" placeholder="CCA school" />
+          <CustomInput form={form} name="ccaTitleOne" label="First CCA title" placeholder="First CCA title" />
+          <CustomInput form={form} name="ccaSchoolOne" label="First CCA school" placeholder="First CCA school" />
+          <CustomInput form={form} name="ccaDetailOne" label="First CCA details" placeholder="First CCA details" />
+          <CustomInput form={form} name="ccaPeriodOne" label="First CCA period" placeholder="2022 - 2025" />
           <CustomTextarea form={form} name="achievements" label="Achievements" placeholder={"Achievement one\nAchievement two"} />
-          <CustomInput form={form} name="schoolOneName" label="First school name" placeholder="School name" />
+          <CustomInput form={form} name="schoolOneName" label="First school name" placeholder="Singapore Polytechnic" />
+          <CustomInput form={form} name="schoolOnePeriod" label="First school period" placeholder="2022 - 2025" />
+          <CustomInput form={form} name="schoolTwoName" label="Second school name" placeholder="Singapore Polytechnic" />
+          <CustomInput form={form} name="schoolTwoPeriod" label="Second school period" placeholder="2022 - 2025" />
           <CustomTextarea form={form} name="languages" label="Languages" placeholder={"Language one\nLanguage two"} />
         </form>
       </Form>
