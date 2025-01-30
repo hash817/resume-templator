@@ -158,14 +158,14 @@ export const PreviewResume = () => {
       await new Promise(resolve => setTimeout(resolve, 100));
 
       const canvas1 = await html2canvas(resumeRef.current, {
-        scale: 2,
+        scale: 5,
         useCORS: true,
-        logging: false
+        logging: false,
       });
 
-      const imgData1 = canvas1.toDataURL("image/png");
+      const imgData1 = canvas1.toDataURL("image/jpeg");
       const pdfHeight1 = (canvas1.height * pdfWidth) / canvas1.width;
-      pdf.addImage(imgData1, "PNG", 0, 0, pdfWidth, pdfHeight1);
+      pdf.addImage(imgData1, "JPEG", 0, 0, pdfWidth, pdfHeight1);
 
       // Export Page 2
       setPage(2);
@@ -173,16 +173,16 @@ export const PreviewResume = () => {
       await new Promise(resolve => setTimeout(resolve, 100));
 
       const canvas2 = await html2canvas(resumeRef.current, {
-        scale: 2,
+        scale: 5,
         useCORS: true,
         logging: false
       });
 
-      const imgData2 = canvas2.toDataURL("image/png");
+      const imgData2 = canvas2.toDataURL("image/jpeg");
       const pdfHeight2 = (canvas2.height * pdfWidth) / canvas2.width;
 
       pdf.addPage();
-      pdf.addImage(imgData2, "PNG", 0, 0, pdfWidth, pdfHeight2);
+      pdf.addImage(imgData2, "JPEG", 0, 0, pdfWidth, pdfHeight2);
 
       // Save the PDF
       pdf.save("resume.pdf");
@@ -209,11 +209,12 @@ export const PreviewResume = () => {
                 //       }
                 //     : {}
                 // }
-                style={{
-                  width: "var(--calculated-width)",
-                  height: "var(--calculated-height)"
-                }}
-          className="bg-white shadow-lg rounded-md m-3 p-10 grid grid-cols-6 gap-y-6 gap-x-12  content-start mx-auto"
+                // style={{
+                //   width: "var(--calculated-width)",
+                //   height: "var(--calculated-height)"
+                // }}
+                // w-[210mm] h-[297mm]
+          className="bg-white shadow-lg rounded-md m-3 p-10 grid grid-cols-6 gap-y-6 gap-x-12 content-start mx-auto w-[210mm] h-[297mm] "
           ref={resumeRef}
         >
           {renderPage(page)}
@@ -226,7 +227,6 @@ export const PreviewResume = () => {
         >
           {isExporting ? "Generating PDF..." : "Export as PDF"}
         </Button>
-   
     </>
   )
 }

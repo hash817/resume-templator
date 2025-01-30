@@ -40,7 +40,7 @@ export function FormSetting() {
   }
 
   return (
-    <div className="flex flex-row items-start space-x-3 space-y-0 rounded-md border p-3 shadow space-y-2">
+    <div className="flex flex-row items-start space-x-3 space-y-0 rounded-md border p-3 shadow">
       <Form {...form}>
         <FormField
           control={form.control}
