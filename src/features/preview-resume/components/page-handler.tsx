@@ -5,7 +5,7 @@ import { ChevronLeftIcon, ChevronRightIcon } from "@radix-ui/react-icons"
 
 export const PageHandler = ({ classNames } : {classNames?: string}) => {
   const pageContext = useContext(PageContext)
-  const { page, setPage } = pageContext
+  const { page, setPage } = pageContext!
  
   const PreviousPage = () => {
     if (page > 1){

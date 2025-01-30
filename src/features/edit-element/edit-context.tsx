@@ -1,6 +1,6 @@
 import { createContext, useState, ReactNode } from 'react';
-interface EditContextType {
-    color: string | null;
+export interface EditContextType {
+    color: string;
     setColor: (values: string) => void;
 }
 
@@ -12,7 +12,7 @@ interface AppProviderProps {
 
 
 export const EditContextProvider = ({ children }: AppProviderProps) => {
-   const [color, setColor] = useState<string | null>("#000000")
+   const [color, setColor] = useState<string>("#000000")
     return (
         <EditContext.Provider value={{ color, setColor }}>
             {children}

@@ -1,8 +1,8 @@
 import { createContext, useState, ReactNode } from 'react';
 
 interface AppContextType {
-    values: Record<string, string> | null;
-    setValues: (values: Record<string, string> | null) => void;
+    values: Record<string, string>;
+    setValues: (values: Record<string, string>) => void;
 }
 
 export const AppContext = createContext<AppContextType | null>(null);
@@ -46,7 +46,7 @@ const DefaultContext: Record<string, string> = {
 }
 
 export const AppProvider = ({ children }: AppProviderProps) => {
-    const [values, setValues] = useState<Record<string, string> | null>(DefaultContext)
+    const [values, setValues] = useState<Record<string, string>>(DefaultContext)
     return (
         <AppContext.Provider value={{ values, setValues }}>
             {children}

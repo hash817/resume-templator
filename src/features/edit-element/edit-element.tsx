@@ -1,10 +1,9 @@
-import React, { useContext, useEffect, useState } from "react"
+import React, { useContext } from "react"
 import { EditContext } from "@/features/edit-element/edit-context"
 import { Input } from "@/components/ui/input"
-
 export const EditElement = ({ classNames }: {classNames: string}) => {
   const editContext = useContext(EditContext)
-  const { color, setColor } = editContext
+  const { color, setColor }  = editContext!
   
   // const [color, setColor] = useState("#000000")
 

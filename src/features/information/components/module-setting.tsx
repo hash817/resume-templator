@@ -2,12 +2,10 @@ import { useContext } from 'react';
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
-import { Button } from "@/components/ui/button"
 import { Checkbox } from "@/components/ui/checkbox"
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -22,7 +20,7 @@ const FormSchema = z.object({
 export function ModuleSetting() {
 
   const settingContext = useContext(SettingContext)
-  const { setFormSettings } = settingContext
+  const { setFormSettings } = settingContext!
 
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
@@ -50,7 +48,7 @@ export function ModuleSetting() {
               <FormControl>
                 <Checkbox
                   checked={field.value}
-                  onCheckedChange={(checked) => {
+                  onCheckedChange={(checked: boolean) => {
                     field.onChange(checked)
                     onChangeHandler("isModuleTwo", checked)
                   }}
@@ -72,7 +70,7 @@ export function ModuleSetting() {
               <FormControl>
                 <Checkbox
                   checked={field.value}
-                  onCheckedChange={(checked) => {
+                  onCheckedChange={(checked: boolean) => {
                     field.onChange(checked)
                     onChangeHandler("isModuleThree", checked)
                   }}

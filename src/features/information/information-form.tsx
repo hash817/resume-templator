@@ -48,7 +48,7 @@ export type FormSchemaType = z.infer<typeof formSchema>;
 
 export function Information() {
   const settingContext = useContext(SettingContext);
-  const { formSettings } = settingContext;
+  const { formSettings } = settingContext!;
 
   // Load stored values from localStorage
   const storedValues = localStorage.getItem("formData");
@@ -93,7 +93,7 @@ export function Information() {
 
   const Context = useContext(AppContext);
 
-  const { setValues } = Context;
+  const { setValues } = Context!;
 
   function onSubmit(values: FormSchemaType) {
     setValues(values);

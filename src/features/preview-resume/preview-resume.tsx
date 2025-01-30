@@ -1,4 +1,4 @@
-import React, { useContext, useRef, useState } from "react"
+import { useContext, useRef, useState } from "react"
 import { UnorderedList } from "@/features/preview-resume/components/unordered-list"
 import { AppContext } from "@/app/context"
 import { EditContext } from "@/features/edit-element/edit-context"
@@ -14,16 +14,16 @@ export const PreviewResume = () => {
   const [isExporting, setIsExporting] = useState(false);
 
   const editContext = useContext(EditContext)
-  const { color } = editContext
+  const { color } = editContext!
 
   const settingContext = useContext(SettingContext)
-  const { formSettings } = settingContext
+  const { formSettings } = settingContext!
 
   const pageContext = useContext(PageContext)
-  const { page, setPage } = pageContext
+  const { page, setPage } = pageContext!
 
   const Context = useContext(AppContext)
-  const { values } = Context
+  const { values } = Context!
 
   const resumeRef = useRef<HTMLDivElement>(null)
 
