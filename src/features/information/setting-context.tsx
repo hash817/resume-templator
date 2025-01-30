@@ -3,6 +3,8 @@ import { createContext, useState, ReactNode } from 'react';
 export interface FormSettingsType {
   isWorkExperienceOne: boolean;
   isWorkExperienceTwo: boolean;
+  isModuleTwo: boolean;
+  isModuleThree: boolean;
 }
 
 interface SettingContextType {
@@ -21,6 +23,8 @@ export const SettingContextProvider = ({ children }: AppProviderProps) => {
   const [formSettings, setFormSettings] = useState({
     isWorkExperienceOne: true,
     isWorkExperienceTwo: false,
+    isModuleTwo: false,
+    isModuleThree: false
   })
 
   return (

@@ -88,10 +88,10 @@ export const PreviewResume = () => {
             <li className="break-words whitespace-normal overflow-wrap-break-word">{values.address}</li>
           </ul>
 
-          <h2 className="text-xl font-semibold tracking-widest uppercase pt-5">ACHIEVEMENTS</h2>
+          <h2 className="text-xl font-semibold tracking-widest uppercase pt-10 mt-10">ACHIEVEMENTS</h2>
           <UnorderedList classNames="pl-5 pt-3 space-y-2" values={values.achievements} />
 
-          <h2 className="text-xl font-semibold tracking-widest uppercase pt-5">EDUCATION</h2>
+          <h2 className="text-xl font-semibold tracking-widest uppercase  pt-10 mt-10">EDUCATION</h2>
           <div className="pt-3">
             <p className="font-medium">{values.schoolOneName}</p>
             <p className="pt-1">{values.schoolOnePeriod}</p>
@@ -101,7 +101,7 @@ export const PreviewResume = () => {
             <p className="pt-1">{values.schoolTwoPeriod}</p>
           </div>
 
-          <h2 className="text-xl font-semibold tracking-widest uppercase pt-5">LANGUAGES</h2>
+          <h2 className="text-xl font-semibold tracking-widest uppercase  pt-10 mt-9">LANGUAGES</h2>
           <UnorderedList classNames="pl-5 pt-3 space-y-2" values={values.languages} />
         </div>
         <div className="col-span-4">
@@ -112,29 +112,30 @@ export const PreviewResume = () => {
             <UnorderedList classNames="pl-5 pt-3 space-y-2" values={values.moduleDetailsOne} />
           </div>
 
-          <h2 className="text-xl font-semibold tracking-widest uppercase pt-5">CO - CURRICULAR ACTIVITES</h2>
-
-          {formSettings.isWorkExperienceOne && (
+          {formSettings.isModuleTwo && (
             <div className="pt-3">
-              <div className="flex items-center justify-between">
-                <p className="font-medium">{values.ccaTitleOne}</p>
-                <p>{values.ccaPeriodOne}</p>
-              </div>
-              <p className="pt-3 pb-3">{values.ccaSchoolOne}</p>
-              <UnorderedList classNames="pl-5 pt-3 space-y-2" values={values.ccaDetailOne} />
+              <p className="font-medium">{values.moduleTitleTwo}</p>
+              <UnorderedList classNames="pl-5 pt-3 space-y-2" values={values.moduleDetailsTwo} />
             </div>
           )}
 
-          {formSettings.isWorkExperienceTwo && (
-            <div className="pt-5">
-              <div className="flex items-center justify-between">
-                <p className="font-medium">{values.workExperienceTitleTwo}</p>
-                <p>{values.workExperiencePeriodTwo}</p>
-              </div>
-              <p className="pt-3 pb-3">{values.workExperienceCompanyTwo}</p>
-              <UnorderedList classNames="pl-5 pt-3 space-y-2" values={values.workExperienceDetailsTwo} />
+          {formSettings.isModuleThree && (
+            <div className="pt-3">
+              <p className="font-medium">{values.moduleTitleThree}</p>
+              <UnorderedList classNames="pl-5 pt-3 space-y-2" values={values.moduleDetailsThree} />
             </div>
           )}
+          <h2 className="text-xl font-semibold tracking-widest uppercase pt-10 mt-10">CO - CURRICULAR ACTIVITES</h2>
+
+          <div className="pt-3">
+            <div className="flex items-center justify-between">
+              <p className="font-medium">{values.ccaTitleOne}</p>
+              <p>{values.ccaPeriodOne}</p>
+            </div>
+            <p className="pt-3 pb-3">{values.ccaSchoolOne}</p>
+            <UnorderedList classNames="pl-5 pt-3 space-y-2" values={values.ccaDetailOne} />
+          </div>
+
         </div>
       </>
     )
@@ -199,34 +200,34 @@ export const PreviewResume = () => {
   return (
     <>
 
-        <h1 className="scroll-m-20 text-3xl font-extrabold tracking-tight text-center">Resume Preview</h1>
-        <div
-                // style={
-                //   window.innerWidth < 576 // Adjust this breakpoint as needed for small screens
-                //     ? {
-                //         transform: `scale(${Math.min(Math.max((window.innerWidth * 0.4) / 793.7, 0.4), 1)})`,
-                //           transformOrigin: 'center'
-                //       }
-                //     : {}
-                // }
-                // style={{
-                //   width: "var(--calculated-width)",
-                //   height: "var(--calculated-height)"
-                // }}
-                // w-[210mm] h-[297mm]
-          className="bg-white shadow-lg rounded-md m-3 p-10 grid grid-cols-6 gap-y-6 gap-x-12 content-start mx-auto w-[210mm] h-[297mm] "
-          ref={resumeRef}
-        >
-          {renderPage(page)}
-        </div>
-        <PageHandler />
-        <Button
-          onClick={exportToPDF}
-          disabled={isExporting}
-          className="mt-4"
-        >
-          {isExporting ? "Generating PDF..." : "Export as PDF"}
-        </Button>
+      <h1 className="scroll-m-20 text-3xl font-extrabold tracking-tight text-center">Resume Preview</h1>
+      <div
+        // style={
+        //   window.innerWidth < 576 // Adjust this breakpoint as needed for small screens
+        //     ? {
+        //         transform: `scale(${Math.min(Math.max((window.innerWidth * 0.4) / 793.7, 0.4), 1)})`,
+        //           transformOrigin: 'center'
+        //       }
+        //     : {}
+        // }
+        // style={{
+        //   width: "var(--calculated-width)",
+        //   height: "var(--calculated-height)"
+        // }}
+        // w-[210mm] h-[297mm]
+        className="bg-white shadow-lg rounded-md m-3 p-10 grid grid-cols-6 gap-y-6 gap-x-12 content-start mx-auto w-[210mm] h-[297mm] "
+        ref={resumeRef}
+      >
+        {renderPage(page)}
+      </div>
+      <PageHandler />
+      <Button
+        onClick={exportToPDF}
+        disabled={isExporting}
+        className="mt-4"
+      >
+        {isExporting ? "Generating PDF..." : "Export as PDF"}
+      </Button>
     </>
   )
 }
