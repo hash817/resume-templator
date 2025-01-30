@@ -6,6 +6,10 @@ ul li { list-style-type: none; &:before { content: '• '; margin-left: -0.7em; 
 
 @layer base {
   :root {
+    --width: 231mm;
+    --height: 326.7mm;
+    --calculated-width: calc(var(--width) / 1.1);  /* 315mm / 1.5 */
+    --calculated-height: calc(var(--height) / 1.1);  /* 445.5mm / 1.5 */
     --background: 0 0% 100%;
     --foreground: 0 0% 3.9%;
     --card: 0 0% 100%;

@@ -7,6 +7,10 @@ export default {
   ],
   theme: {
   	extend: {
+      spacing: {
+        'custom-width': 'var(--width)',  // Custom variable for width
+        'custom-height': 'var(--height)',  // Custom variable for height
+      },
   		borderRadius: {
   			lg: 'var(--radius)',
   			md: 'calc(var(--radius) - 2px)',
