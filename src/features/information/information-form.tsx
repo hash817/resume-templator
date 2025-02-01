@@ -4,10 +4,9 @@ import { useForm } from "react-hook-form";
 import { useContext, useEffect } from "react";
 import { AppContext } from "@/app/context";
 import { Form } from "@/components/ui/form";
-import { FormSetting } from "@/features/information/components/work-setting";
-import { SettingContext } from "@/features/information/setting-context";
+import { CustomCheckbox } from "@/features/information/components/custom-field";
 import { CustomInput, CustomTextarea } from "@/features/information/components/custom-field";
-import { ModuleSetting } from "@/features/information/components/module-setting";
+import { SettingContext} from "@/features/information/setting-context"
 
 const formSchema = z.object({
   name: z.string().min(1, {message: "Please fill in name"}),
@@ -17,20 +16,24 @@ const formSchema = z.object({
   technicalSkills: z.string().min(1, { message: "Please fill in technical skills" }),
   softSkills: z.string().min(1, { message: "Please fill in soft skills" }),
   profile: z.string().min(1, { message: "Please fill in profile" }),
-  workExperienceTitleOne: z.string().optional(),
-  workExperienceCompanyOne: z.string().optional(),
-  workExperienceDetailsOne: z.string().optional(),
-  workExperiencePeriodOne: z.string().optional(),
-  workExperienceTitleTwo: z.string().optional(),
-  workExperienceCompanyTwo: z.string().optional(),
-  workExperienceDetailsTwo: z.string().optional(),
-  workExperiencePeriodTwo: z.string().optional(),
+  workExperienceTitleOne: z.string().default(""),
+  workExperienceCompanyOne: z.string().default(""),
+  workExperienceDetailsOne: z.string().default(""),
+  workExperiencePeriodOne: z.string().default(""),
+  workExperienceTitleTwo: z.string().default(""),
+  workExperienceCompanyTwo: z.string().default(""),
+  workExperienceDetailsTwo: z.string().default(""),
+  workExperiencePeriodTwo: z.string().default(""),
+  isWorkExperienceOne: z.boolean().default(true),
+  isWorkExperienceTwo: z.boolean().default(false),
+  isModuleTwo: z.boolean().default(false),
+  isModuleThree: z.boolean().default(false),
   moduleTitleOne: z.string().min(1, { message: "Please fill in module title (1)" }),
   moduleDetailsOne: z.string().min(1, { message: "Please fill in module details (1)" }),
-  moduleTitleTwo: z.string().optional(),
-  moduleDetailsTwo: z.string().optional(),
-  moduleTitleThree: z.string().optional(),
-  moduleDetailsThree: z.string().optional(),
+  moduleTitleTwo: z.string().default(""),
+  moduleDetailsTwo: z.string().default(""),
+  moduleTitleThree: z.string().default(""),
+  moduleDetailsThree: z.string().default(""),
   ccaTitleOne: z.string().min(1, { message: "Please fill in CCA title" }),
   ccaSchoolOne: z.string().min(1, { message: "Please fill in CCA school" }),
   ccaPeriodOne: z.string().min(1, { message: "Please fill in CCA period" }),
@@ -41,7 +44,6 @@ const formSchema = z.object({
   schoolTwoName: z.string().min(1, { message: "Please fill in second school name" }),
   schoolTwoPeriod: z.string().min(1, { message: "Please fill in second school period" }),
   languages: z.string().min(1, { message: "Please fill in languages" })
-
 });
 
 export type FormSchemaType = z.infer<typeof formSchema>;
@@ -49,6 +51,9 @@ export type FormSchemaType = z.infer<typeof formSchema>;
 export function Information() {
   const settingContext = useContext(SettingContext);
   const { formSettings } = settingContext!;
+
+  const Context = useContext(AppContext);
+  const { setValues } = Context!;
 
   // Load stored values from localStorage
   const storedValues = localStorage.getItem("formData");
@@ -68,6 +73,10 @@ export function Information() {
     workExperienceCompanyTwo: "",
     workExperienceDetailsTwo: "",
     workExperiencePeriodTwo: "",
+    isWorkExperienceOne: true,
+    isWorkExperienceTwo: false,
+    isModuleTwo: false,
+    isModuleThree: false,
     moduleTitleOne: "",
     moduleDetailsOne: "",
     moduleTitleTwo: "",
@@ -91,23 +100,19 @@ export function Information() {
     defaultValues: initialValues,
   });
 
-  const Context = useContext(AppContext);
-
-  const { setValues } = Context!;
-
-  function onSubmit(values: FormSchemaType) {
-    setValues(values);
-    localStorage.setItem("formData", JSON.stringify(values)); // Save to localStorage
-    console.log("Form Submitted:", values);
-  }
-
   useEffect(() => {
-    console.log(form.formState.errors); 
+    // console.log(form.formState.errors); 
     const subscription = form.watch((values) => {
-      localStorage.setItem("formData", JSON.stringify(values)); // Auto-save on change
+      localStorage.setItem("formData", JSON.stringify(values));
     });
     return () => subscription.unsubscribe();
   }, [form]);
+
+  function onSubmit(values: FormSchemaType) {
+    setValues(values);
+    localStorage.setItem("formData", JSON.stringify(values));
+    console.log("Form Submitted:", values);
+  }
 
   return (
     <div className="p-1">
@@ -124,8 +129,11 @@ export function Information() {
           <CustomTextarea form={form} name="softSkills" label="Soft Skills" placeholder={"Soft skill one\nSoft skill two"} />
           <CustomTextarea form={form} name="profile" label="Profile" placeholder="Profile" />
 
-          <FormSetting />
-
+          <div className="flex flex-row items-start space-x-3 space-y-0 rounded-md border p-3 shadow">
+            <CustomCheckbox form={form} name="isWorkExperienceOne" label="One work experience" />
+            <CustomCheckbox form={form} name="isWorkExperienceTwo" label="Additional work experience" />
+          </div>
+         
           {formSettings.isWorkExperienceOne && (
             <>
               <CustomInput form={form} name="workExperienceTitleOne" label="Work Experience Title 1" placeholder="Work Experience Title 1" />
@@ -147,7 +155,11 @@ export function Information() {
           <p className="pb-1">Please provide project details</p>
           <CustomInput form={form} name="moduleTitleOne" label="Module Title 1" placeholder="Module Title 1" />
           <CustomTextarea form={form} name="moduleDetailsOne" label="Module Details 1" placeholder={"Detail one\nDetail two"} />
-          <ModuleSetting />
+
+          <div className="flex flex-row items-start space-x-3 space-y-0 rounded-md border p-3 shadow">
+            <CustomCheckbox form={form} name="isModuleTwo" label="Second additional module to fill in" />
+            <CustomCheckbox form={form} name="isModuleThree" label="Third additional module to fill in" />
+          </div>
 
           {formSettings.isModuleTwo && (
             <>

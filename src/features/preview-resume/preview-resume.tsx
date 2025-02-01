@@ -42,26 +42,28 @@ export const PreviewResume = () => {
           </ul>
 
           <h2 className="text-xl font-semibold tracking-widest uppercase pt-5">TECHNICAL SKILLS</h2>
-          <UnorderedList classNames="pl-5 pt-3 space-y-2" values={values.technicalSkills} />
+          <UnorderedList classNames="pl-5 pt-3 space-y-2" values={values.technicalSkills as string} />
 
           <h2 className="text-xl font-semibold tracking-widest uppercase pt-5">SOFT SKILLS</h2>
-          <UnorderedList classNames="pl-5 pt-3 space-y-2" values={values.softSkills} />
+          <UnorderedList classNames="pl-5 pt-3 space-y-2" values={values.softSkills as string} />
 
         </div>
         <div className="col-span-4">
           <h2 className="text-xl font-semibold tracking-widest uppercase">PROFILE</h2>
           <p className="pt-3 break-words whitespace-normal overflow-wrap-break-word">{values.profile}</p>
-          <h2 className="text-xl font-semibold tracking-widest uppercase pt-5">WORK EXPERIENCE</h2>
 
           {formSettings.isWorkExperienceOne && (
-            <div className="pt-3">
-              <div className="flex items-center justify-between">
-                <p className="font-medium">{values.workExperienceTitleOne}</p>
-                <p>{values.workExperiencePeriodOne}</p>
+            <>
+              <h2 className="text-xl font-semibold tracking-widest uppercase pt-5">WORK EXPERIENCE</h2>
+              <div className="pt-3">
+                <div className="flex items-center justify-between">
+                  <p className="font-medium">{values.workExperienceTitleOne}</p>
+                  <p>{values.workExperiencePeriodOne}</p>
+                </div>
+                <p className="pt-3 pb-3">{values.workExperienceCompanyOne}</p>
+                <UnorderedList classNames="pl-5 pt-3 space-y-2" values={values.workExperienceDetailsOne as string} />
               </div>
-              <p className="pt-3 pb-3">{values.workExperienceCompanyOne}</p>
-              <UnorderedList classNames="pl-5 pt-3 space-y-2" values={values.workExperienceDetailsOne} />
-            </div>
+            </>
           )}
 
           {formSettings.isWorkExperienceTwo && (
@@ -71,7 +73,7 @@ export const PreviewResume = () => {
                 <p>{values.workExperiencePeriodTwo}</p>
               </div>
               <p className="pt-3 pb-3">{values.workExperienceCompanyTwo}</p>
-              <UnorderedList classNames="pl-5 pt-3 space-y-2" values={values.workExperienceDetailsTwo} />
+              <UnorderedList classNames="pl-5 pt-3 space-y-2" values={values.workExperienceDetailsTwo as string} />
             </div>
           )}
         </div>
@@ -89,7 +91,7 @@ export const PreviewResume = () => {
           </ul>
 
           <h2 className="text-xl font-semibold tracking-widest uppercase pt-10 mt-10">ACHIEVEMENTS</h2>
-          <UnorderedList classNames="pl-5 pt-3 space-y-2" values={values.achievements} />
+          <UnorderedList classNames="pl-5 pt-3 space-y-2" values={values.achievements as string} />
 
           <h2 className="text-xl font-semibold tracking-widest uppercase  pt-10 mt-10">EDUCATION</h2>
           <div className="pt-3">
@@ -102,27 +104,27 @@ export const PreviewResume = () => {
           </div>
 
           <h2 className="text-xl font-semibold tracking-widest uppercase  pt-10 mt-9">LANGUAGES</h2>
-          <UnorderedList classNames="pl-5 pt-3 space-y-2" values={values.languages} />
+          <UnorderedList classNames="pl-5 pt-3 space-y-2" values={values.languages as string} />
         </div>
         <div className="col-span-4">
 
           <h2 className="text-xl font-semibold tracking-widest uppercase">ACADEMIC - PROJECTS</h2>
           <div className="pt-3">
             <p className="font-medium">{values.moduleTitleOne}</p>
-            <UnorderedList classNames="pl-5 pt-3 space-y-2" values={values.moduleDetailsOne} />
+            <UnorderedList classNames="pl-5 pt-3 space-y-2" values={values.moduleDetailsOne as string} />
           </div>
 
           {formSettings.isModuleTwo && (
             <div className="pt-3">
               <p className="font-medium">{values.moduleTitleTwo}</p>
-              <UnorderedList classNames="pl-5 pt-3 space-y-2" values={values.moduleDetailsTwo} />
+              <UnorderedList classNames="pl-5 pt-3 space-y-2" values={values.moduleDetailsTwo as string} />
             </div>
           )}
 
           {formSettings.isModuleThree && (
             <div className="pt-3">
               <p className="font-medium">{values.moduleTitleThree}</p>
-              <UnorderedList classNames="pl-5 pt-3 space-y-2" values={values.moduleDetailsThree} />
+              <UnorderedList classNames="pl-5 pt-3 space-y-2" values={values.moduleDetailsThree as string} />
             </div>
           )}
           <h2 className="text-xl font-semibold tracking-widest uppercase pt-10 mt-10">CO - CURRICULAR ACTIVITES</h2>
@@ -133,7 +135,7 @@ export const PreviewResume = () => {
               <p>{values.ccaPeriodOne}</p>
             </div>
             <p className="pt-3 pb-3">{values.ccaSchoolOne}</p>
-            <UnorderedList classNames="pl-5 pt-3 space-y-2" values={values.ccaDetailOne} />
+            <UnorderedList classNames="pl-5 pt-3 space-y-2" values={values.ccaDetailOne as string} />
           </div>
 
         </div>

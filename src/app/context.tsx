@@ -1,8 +1,9 @@
 import { createContext, useState, ReactNode } from 'react';
+import { FormSchemaType } from '@/features/information/information-form';
 
 interface AppContextType {
-    values: Record<string, string>;
-    setValues: (values: Record<string, string>) => void;
+    values: Record<keyof FormSchemaType, string | boolean>;
+    setValues: (values: Record<keyof FormSchemaType, string | boolean>) => void;
 }
 
 export const AppContext = createContext<AppContextType | null>(null);
@@ -11,7 +12,7 @@ interface AppProviderProps {
     children: ReactNode;
 }
 
-const DefaultContext: Record<string, string> = {
+const DefaultContext: Record<keyof FormSchemaType, string | boolean> = {
     "name":"Name",
     "number": "1234 5678",
     "email": "name@ichat.sp.edu.sg",
@@ -27,6 +28,10 @@ const DefaultContext: Record<string, string> = {
     "workExperienceCompanyTwo": "KOI",
     "workExperienceDetailsTwo": "Proactively engaged customers by suggesting add-ons or complementary items,contributing to increased sales and customer satisfaction.\nManaged cash transactions accurately, preventing discrepancies and ensuring the integrity of financial transactions.",
     "workExperiencePeriodTwo": "2023 May - 2023 September",
+    "isWorkExperienceOne": true,
+    "isWorkExperienceTwo": false,
+    "isModuleTwo": false,
+    "isModuleThree": false,
     "moduleTitleOne": "Enterprise Systems Development",
     "moduleDetailsOne": "Used a good software design patterns such as the model-view-controller architecture when designing an application to optimize and host it on the cloud.\nEnforced web usability principles, adhering to W3C web standards and accessibility guidelines.",
     "moduleTitleTwo": "Enterprise Systems Development",
@@ -46,7 +51,7 @@ const DefaultContext: Record<string, string> = {
 }
 
 export const AppProvider = ({ children }: AppProviderProps) => {
-    const [values, setValues] = useState<Record<string, string>>(DefaultContext)
+    const [values, setValues] = useState<Record<keyof FormSchemaType, string | boolean>>(DefaultContext)
     return (
         <AppContext.Provider value={{ values, setValues }}>
             {children}
