@@ -224,7 +224,7 @@ export const PreviewResume = () => {
       <Button
         onClick={exportToPDF}
         disabled={isExporting}
-        className="mt-4"
+        className="mt-4 mb-5"
       >
         {isExporting ? "Generating PDF..." : "Export as PDF"}
       </Button>

@@ -143,7 +143,8 @@ export function Information() {
               <CustomInput form={form} name="workExperiencePeriodTwo" label="Work Experience Period 2" placeholder="2023 May - 2023 September" />
             </>
           )}
-
+          <p className="font-medium pt-5 pb-5">Please refer to page 2 of resume</p>
+          <p className="pb-1">Please provide project details</p>
           <CustomInput form={form} name="moduleTitleOne" label="Module Title 1" placeholder="Module Title 1" />
           <CustomTextarea form={form} name="moduleDetailsOne" label="Module Details 1" placeholder={"Detail one\nDetail two"} />
           <ModuleSetting />
