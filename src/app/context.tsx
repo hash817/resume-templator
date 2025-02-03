@@ -2,8 +2,8 @@ import { createContext, useState, ReactNode } from 'react';
 import { FormSchemaType } from '@/features/information/information-form';
 
 interface AppContextType {
-    values: Record<keyof FormSchemaType, string | boolean>;
-    setValues: (values: Record<keyof FormSchemaType, string | boolean>) => void;
+    values: Partial<Record<keyof FormSchemaType, string | boolean>>;
+    setValues: (values: Partial<Record<keyof FormSchemaType, string | boolean>>) => void;
 }
 
 export const AppContext = createContext<AppContextType | null>(null);
@@ -12,7 +12,7 @@ interface AppProviderProps {
     children: ReactNode;
 }
 
-const DefaultContext: Record<keyof FormSchemaType, string | boolean> = {
+const DefaultContext: Partial<Record<keyof FormSchemaType, string | boolean>> = {
     "name":"Name",
     "number": "1234 5678",
     "email": "name@ichat.sp.edu.sg",
@@ -20,6 +20,8 @@ const DefaultContext: Record<keyof FormSchemaType, string | boolean> = {
     "technicalSkills": "Integrated Figma and other graphic design tools to produce visually appealing website layouts and components\nDeveloped and maintained responsive and user-friendly web applications using HTML5, CSS3, and JavaScript.\nImplemented VueJS to enhance user interactions and deliver seamless, intuitive interfaces",
     "softSkills": "Experience in creating visually appealing and cohesive design concepts.\nExcellent communication skills inspoken and written English.\nExcellent communication skills inspoken and written English.",
     "profile": "Highly motivated and results-driven professional with a proven ability to excel in fast-paced environments. A passionate lifelong learner, I thrive on continuous growth and eagerly embrace the challenge of pioneering new concepts. Possessing strong analytical and problem-solving skills, I approach challenges with a strategic mindset, identifying innovative solutions to drive successful outcomes. A selfstarter with a demonstrated ability to take initiative and lead projects to completion, I am committed to contributing dynamic energy and expertise to a team-focused organization",
+    "linkedin": "https://www.linkedin.com/in/example",
+    "github": "https://github.com/example",
     "workExperienceTitleOne": "F & B Server",
     "workExperienceCompanyOne": "ONE15 Marina Hotel",
     "workExperienceDetailsOne": "Greeted guests warmly, offering detailed explanations of buffet offerings andproviding recommendations based on their preferences.\nImplemented creative displays and thematic arrangements during special events, contributing to the hotel's reputation for exquisite dining experiences.",
@@ -51,7 +53,7 @@ const DefaultContext: Record<keyof FormSchemaType, string | boolean> = {
 }
 
 export const AppProvider = ({ children }: AppProviderProps) => {
-    const [values, setValues] = useState<Record<keyof FormSchemaType, string | boolean>>(DefaultContext)
+    const [values, setValues] = useState<Partial<Record<keyof FormSchemaType, string | boolean>>>(DefaultContext)
     return (
         <AppContext.Provider value={{ values, setValues }}>
             {children}

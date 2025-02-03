@@ -36,9 +36,11 @@ export const PreviewResume = () => {
         <div className="col-span-2">
           <h2 className="text-xl font-semibold tracking-widest uppercase" >CONTACT</h2>
           <ul className="pl-5 pt-3 list-disc space-y-2">
-            <li className="break-words whitespace-normal overflow-wrap-break-word">{values.number}</li>
-            <li className="break-words whitespace-normal overflow-wrap-break-word">{values.email}</li>
-            <li className="break-words whitespace-normal overflow-wrap-break-word">{values.address}</li>
+            <li className="break-words whitespace-normal break-all">{values.number}</li>
+            <li className="break-words whitespace-normal break-all">{values.email}</li>
+            <li className="break-words whitespace-normal break-all">{values.address}</li>
+            <li className="break-words whitespace-normal break-all">{values.linkedin}</li>
+            <li className="break-words whitespace-normal break-all">{values.github}</li>
           </ul>
 
           <h2 className="text-xl font-semibold tracking-widest uppercase pt-5">TECHNICAL SKILLS</h2>
@@ -85,9 +87,11 @@ export const PreviewResume = () => {
         <div className="col-span-2">
           <h2 className="text-xl font-semibold tracking-widest uppercase" >CONTACT</h2>
           <ul className="pl-5 pt-3 list-disc space-y-2">
-            <li className="break-words whitespace-normal overflow-wrap-break-word">{values.number}</li>
-            <li className="break-words whitespace-normal overflow-wrap-break-word">{values.email}</li>
-            <li className="break-words whitespace-normal overflow-wrap-break-word">{values.address}</li>
+            <li className="break-words whitespace-normal break-all">{values.number}</li>
+            <li className="break-words whitespace-normal break-all">{values.email}</li>
+            <li className="break-words whitespace-normal break-all">{values.address}</li>
+            <li className="break-words whitespace-normal break-all">{values.linkedin}</li>
+            <li className="break-words whitespace-normal break-all">{values.github}</li>
           </ul>
 
           <h2 className="text-xl font-semibold tracking-widest uppercase pt-10 mt-10">ACHIEVEMENTS</h2>

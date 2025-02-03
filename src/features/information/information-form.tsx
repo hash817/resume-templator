@@ -6,13 +6,15 @@ import { AppContext } from "@/app/context";
 import { Form } from "@/components/ui/form";
 import { CustomCheckbox } from "@/features/information/components/custom-field";
 import { CustomInput, CustomTextarea } from "@/features/information/components/custom-field";
-import { SettingContext} from "@/features/information/setting-context"
+import { SettingContext } from "@/features/information/setting-context"
 
 const formSchema = z.object({
-  name: z.string().min(1, {message: "Please fill in name"}),
+  name: z.string().min(1, { message: "Please fill in name" }),
   number: z.string().min(1, { message: "Please fill in number" }),
   email: z.string().min(1, { message: "Please fill in email" }).email({ message: "Please enter a valid email address" }),
   address: z.string().min(1, { message: "Please fill in address" }),
+  linkedin: z.string().optional(),
+  github: z.string().optional(),
   technicalSkills: z.string().min(1, { message: "Please fill in technical skills" }),
   softSkills: z.string().min(1, { message: "Please fill in soft skills" }),
   profile: z.string().min(1, { message: "Please fill in profile" }),
@@ -50,7 +52,7 @@ export type FormSchemaType = z.infer<typeof formSchema>;
 
 export function Information() {
   const settingContext = useContext(SettingContext);
-  const { formSettings } = settingContext!;
+  const { formSettings, setFormSettings } = settingContext!;
 
   const Context = useContext(AppContext);
   const { setValues } = Context!;
@@ -62,6 +64,8 @@ export function Information() {
     number: "",
     email: "",
     address: "",
+    linkedin: "",
+    github: "",
     technicalSkills: "",
     softSkills: "",
     profile: "",
@@ -125,6 +129,8 @@ export function Information() {
           <CustomInput form={form} name="number" label="Phone number" placeholder="Phone number" />
           <CustomInput form={form} name="email" label="Email" placeholder="Email" />
           <CustomInput form={form} name="address" label="Address" placeholder="Address" />
+          <CustomInput form={form} name="linkedin" label="LinkedIn URL (Optional)" placeholder="LinkedIn URL" />
+          <CustomInput form={form} name="github" label="Github URL (Optional)" placeholder="Github URL" />
           <CustomTextarea form={form} name="technicalSkills" label="Technical Skills" placeholder={"Technical skill one\nTechnical skill two"} />
           <CustomTextarea form={form} name="softSkills" label="Soft Skills" placeholder={"Soft skill one\nSoft skill two"} />
           <CustomTextarea form={form} name="profile" label="Profile" placeholder="Profile" />
@@ -133,7 +139,7 @@ export function Information() {
             <CustomCheckbox form={form} name="isWorkExperienceOne" label="One work experience" />
             <CustomCheckbox form={form} name="isWorkExperienceTwo" label="Additional work experience" />
           </div>
-         
+
           {formSettings.isWorkExperienceOne && (
             <>
               <CustomInput form={form} name="workExperienceTitleOne" label="Work Experience Title 1" placeholder="Work Experience Title 1" />

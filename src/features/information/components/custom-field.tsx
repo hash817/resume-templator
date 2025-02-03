@@ -1,3 +1,4 @@
+import { useContext, useEffect } from 'react';
 import {
   FormControl,
   FormField,
@@ -9,11 +10,8 @@ import { Input } from "@/components/ui/input"
 import { FormSchemaType } from "@/features/information/information-form"
 import { UseFormReturn } from "react-hook-form";
 import { Textarea } from "@/components/ui/textarea"
-import { useContext } from 'react';
 import { Checkbox } from "@/components/ui/checkbox"
 import { SettingContext, FormSettingsType } from "@/features/information/setting-context"
-
-
 
 type CustomFieldProps = {
   form: UseFormReturn<FormSchemaType>
@@ -72,11 +70,22 @@ const CustomCheckbox = ({ form, name, label }: { form: UseFormReturn<FormSchemaT
   const { setFormSettings } = settingContext!
 
   function onChangeHandler(field: keyof FormSettingsType, value: boolean) {
-    setFormSettings((prevSettings: FormSettingsType) => ({
+    setFormSettings((prevSettings) => ({
       ...prevSettings,
       [field]: value,
     }))
   }
+  useEffect(() => {
+    const savedFormData = localStorage.getItem("formData");
+    if (savedFormData) {
+      const parsedData = JSON.parse(savedFormData);
+      setFormSettings((prev) => ({
+        ...prev,
+        [name]: parsedData[name],
+      }));
+
+    }
+  }, [form, name, setFormSettings]);
 
   return (
     <>
