@@ -52,7 +52,7 @@ export type FormSchemaType = z.infer<typeof formSchema>;
 
 export function Information() {
   const settingContext = useContext(SettingContext);
-  const { formSettings, setFormSettings } = settingContext!;
+  const { formSettings } = settingContext!;
 
   const Context = useContext(AppContext);
   const { setValues } = Context!;

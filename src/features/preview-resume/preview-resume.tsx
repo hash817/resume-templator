@@ -36,11 +36,11 @@ export const PreviewResume = () => {
         <div className="col-span-2">
           <h2 className="text-xl font-semibold tracking-widest uppercase" >CONTACT</h2>
           <ul className="pl-5 pt-3 list-disc space-y-2">
-            <li className="break-words whitespace-normal break-all">{values.number}</li>
-            <li className="break-words whitespace-normal break-all">{values.email}</li>
-            <li className="break-words whitespace-normal break-all">{values.address}</li>
-            <li className="break-words whitespace-normal break-all">{values.linkedin}</li>
-            <li className="break-words whitespace-normal break-all">{values.github}</li>
+            <li className="whitespace-normal break-all">{values.number}</li>
+            <li className="whitespace-normal break-all">{values.email}</li>
+            <li className="break-normal whitespace-normal">{values.address}</li>
+            <li className="whitespace-normal break-all">{values.linkedin}</li>
+            <li className="whitespace-normal break-all">{values.github}</li>
           </ul>
 
           <h2 className="text-xl font-semibold tracking-widest uppercase pt-5">TECHNICAL SKILLS</h2>
@@ -52,7 +52,7 @@ export const PreviewResume = () => {
         </div>
         <div className="col-span-4">
           <h2 className="text-xl font-semibold tracking-widest uppercase">PROFILE</h2>
-          <p className="pt-3 break-words whitespace-normal overflow-wrap-break-word">{values.profile}</p>
+          <p className="pt-3 break-normal whitespace-normal">{values.profile}</p>
 
           {formSettings.isWorkExperienceOne && (
             <>
@@ -87,11 +87,11 @@ export const PreviewResume = () => {
         <div className="col-span-2">
           <h2 className="text-xl font-semibold tracking-widest uppercase" >CONTACT</h2>
           <ul className="pl-5 pt-3 list-disc space-y-2">
-            <li className="break-words whitespace-normal break-all">{values.number}</li>
-            <li className="break-words whitespace-normal break-all">{values.email}</li>
-            <li className="break-words whitespace-normal break-all">{values.address}</li>
-            <li className="break-words whitespace-normal break-all">{values.linkedin}</li>
-            <li className="break-words whitespace-normal break-all">{values.github}</li>
+            <li className="whitespace-normal break-all">{values.number}</li>
+            <li className="whitespace-normal break-all">{values.email}</li>
+            <li className="break-normal whitespace-normal">{values.address}</li>
+            <li className="whitespace-normal break-all">{values.linkedin}</li>
+            <li className="whitespace-normal break-all">{values.github}</li>
           </ul>
 
           <h2 className="text-xl font-semibold tracking-widest uppercase pt-10 mt-10">ACHIEVEMENTS</h2>
@@ -208,19 +208,6 @@ export const PreviewResume = () => {
 
       <h1 className="scroll-m-20 text-3xl font-extrabold tracking-tight text-center">Resume Preview</h1>
       <div
-        // style={
-        //   window.innerWidth < 576 // Adjust this breakpoint as needed for small screens
-        //     ? {
-        //         transform: `scale(${Math.min(Math.max((window.innerWidth * 0.4) / 793.7, 0.4), 1)})`,
-        //           transformOrigin: 'center'
-        //       }
-        //     : {}
-        // }
-        // style={{
-        //   width: "var(--calculated-width)",
-        //   height: "var(--calculated-height)"
-        // }}
-        // w-[210mm] h-[297mm]
         className="bg-white shadow-lg rounded-md m-3 p-10 grid grid-cols-6 gap-y-6 gap-x-12 content-start mx-auto w-[210mm] h-[297mm] "
         ref={resumeRef}
       >
