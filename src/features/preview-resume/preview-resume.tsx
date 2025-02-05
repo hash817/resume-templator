@@ -39,8 +39,12 @@ export const PreviewResume = () => {
             <li className="whitespace-normal break-all">{values.number}</li>
             <li className="whitespace-normal break-all">{values.email}</li>
             <li className="break-normal whitespace-normal">{values.address}</li>
-            <li className="whitespace-normal break-all">{values.linkedin}</li>
-            <li className="whitespace-normal break-all">{values.github}</li>
+            {values.linkedin && (
+              <li className="whitespace-normal break-all">{values.linkedin}</li>
+            )}
+            {values.github && (
+              <li className="whitespace-normal break-all">{values.github}</li>
+            )}
           </ul>
 
           <h2 className="text-xl font-semibold tracking-widest uppercase pt-5">TECHNICAL SKILLS</h2>
@@ -90,8 +94,12 @@ export const PreviewResume = () => {
             <li className="whitespace-normal break-all">{values.number}</li>
             <li className="whitespace-normal break-all">{values.email}</li>
             <li className="break-normal whitespace-normal">{values.address}</li>
-            <li className="whitespace-normal break-all">{values.linkedin}</li>
-            <li className="whitespace-normal break-all">{values.github}</li>
+            {values.linkedin && (
+              <li className="whitespace-normal break-all">{values.linkedin}</li>
+            )}
+            {values.github && (
+              <li className="whitespace-normal break-all">{values.github}</li>
+            )}
           </ul>
 
           <h2 className="text-xl font-semibold tracking-widest uppercase pt-10 mt-10">ACHIEVEMENTS</h2>
